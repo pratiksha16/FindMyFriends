@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "478726149891",
+    "firebase_url": "https://findmyfriend-87acf.firebaseio.com",
+    "project_id": "findmyfriend-87acf",
+    "storage_bucket": "findmyfriend-87acf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478726149891:android:049682404f2cfd7ca27b36",
+        "android_client_info": {
+          "package_name": "com.example.findmyfriends"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "478726149891-rqfr8a2ko1dko72ppnuonatcpa41bnfu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD76r4sC1NOLQhTjPngBtkZrpLhvNT1p74"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "478726149891-rqfr8a2ko1dko72ppnuonatcpa41bnfu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
