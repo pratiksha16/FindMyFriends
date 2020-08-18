@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
-  SignInButton signInButton;
+    SignInButton signInButton;
 
 
 
@@ -80,10 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void  updateUI(GoogleSignInAccount account){
         if(account != null){
-            Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Signed in successfully",Toast.LENGTH_LONG).show();
             startActivity(new Intent(this,MapsActivity.class));
         }else {
-            Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Error signing in",Toast.LENGTH_LONG).show();
         }
     }
 }
