@@ -1,5 +1,6 @@
 package com.example.findmyfriends;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -16,12 +19,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+    EditText email, password;
+    Button signUp;
+    FirebaseAuth mfirebaseAuth;
+    TextView register;
+
     GoogleSignInClient mGoogleSignInClient;
-  SignInButton signInButton;
+    SignInButton signInButton;
+
+
 
 
 
@@ -29,6 +42,58 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mfirebaseAuth= FirebaseAuth.getInstance();
+        email= findViewById(R.id.email);
+        password= findViewById(R.id.password);
+        signUp= findViewById(R.id.signUp);
+        register=findViewById(R.id.register);
+        signUp.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                String emailId= email.getText().toString();
+                String pw= password.getText().toString();
+                if(emailId.isEmpty()){
+                    email.setError("Please,enter the email id.");
+                    email.requestFocus();
+                }
+                else if(pw.isEmpty()){
+                    password.setError("Please, input the password");
+                    password.requestFocus();
+                }
+                else if(emailId.isEmpty() && pw.isEmpty()){
+                    Toast.makeText(MainActivity.this, "Fields are Empty!", Toast.LENGTH_SHORT).show();
+
+                }
+                else if(!emailId.isEmpty() && !pw.isEmpty()){
+                    mfirebaseAuth.createUserWithEmailAndPassword(emailId,pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful()){
+                                Toast.makeText(MainActivity.this,"SignUp UnsuccessFul.Please Try Again",Toast.LENGTH_SHORT);
+                            }
+                            else{
+                                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                            }
+                        }
+                    });
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Error Occured", Toast.LENGTH_SHORT);
+                }
+            }
+        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(MainActivity.this, LogInActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
        signInButton= findViewById(R.id.sign_in_button);
         // Configure sign-in to request the user's ID, email address, and basic
 // profile. ID and basic profile are included in DEFAULT_SIGN_IN.

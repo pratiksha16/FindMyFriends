@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -38,6 +39,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationManager locationmanager;
     LocationListener locationlistner;
     Button signOut;
+    FirebaseAuth mfirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListner;
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -65,20 +68,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        //On Succesfull signout we navigate the user back to LoginActivity
-                        Intent intent = new Intent(MapsActivity.this, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish();
-
-                    }
-                });
-
+                FirebaseAuth.getInstance().signOut();
+                Intent intoMain= new Intent(MapsActivity.this, MainActivity.class);
+                startActivity(intoMain);
             }
         });
+
     }
 
 
