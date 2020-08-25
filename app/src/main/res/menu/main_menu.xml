@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_your_location"
+            android:icon="@drawable/location_icon"
+            android:title="WhereUAtT??" />
+
+
+    </group>
+
+        <item android:title="Profile">
+            <menu>
+                <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_icon"
+                    android:title="Logout" />
+                </group>
+            </menu>
+        </item>
+
+
+
+    <item android:title="Track">
+        <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_contacts"
+                android:title="Friends List"
+                android:icon="@drawable/contacts_icon" />
+            <item
+                android:id="@+id/nav_location"
+                android:title="Shared Location"
+                android:icon="@drawable/location_icon" />
+            </group>
+        </menu>
+    </item>
+</menu>

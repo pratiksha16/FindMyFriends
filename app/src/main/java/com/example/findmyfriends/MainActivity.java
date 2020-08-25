@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this,"SignUp UnsuccessFul.Please Try Again",Toast.LENGTH_SHORT);
                             }
                             else{
-                                startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                                startActivity(new Intent(MainActivity.this, HomeActivity.class));
                             }
                         }
                     });
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
        signInButton= findViewById(R.id.sign_in_button);
         // Configure sign-in to request the user's ID, email address, and basic
-// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     public void  updateUI(GoogleSignInAccount account){
         if(account != null){
             Toast.makeText(this,"U Signed In successfully",Toast.LENGTH_LONG).show();
-            startActivity(new Intent(this,MapsActivity.class));
+            startActivity(new Intent(this,HomeActivity.class));
         }else {
             Toast.makeText(this,"U Didnt signed in",Toast.LENGTH_LONG).show();
         }
