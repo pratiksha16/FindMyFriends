@@ -83,6 +83,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 Intent intoMain= new Intent(HomeActivity.this, MainActivity.class);
+                startActivity(intoMain);
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
