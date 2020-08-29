@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "478726149891-apktlugkbillh0d90irkdoe2clbrvfrd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.findmyfriends",
+            "certificate_hash": "589bd857402564925229a1099bd2f3b6dbf9a55a"
+          }
+        },
+        {
           "client_id": "478726149891-rqfr8a2ko1dko72ppnuonatcpa41bnfu.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -28,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "478726149891-rqfr8a2ko1dko72ppnuonatcpa41bnfu.apps.googleusercontent.com",
+              "client_id": "478726149891-rbjj027p769lo4i0pnrvln20v5u297nl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

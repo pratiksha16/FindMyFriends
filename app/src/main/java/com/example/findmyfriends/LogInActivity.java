@@ -33,6 +33,7 @@ public class LogInActivity extends AppCompatActivity {
         password= findViewById(R.id.password);
         logIn= findViewById(R.id.LogIn);
         tvLog=findViewById(R.id.textView);
+        mfirebaseAuth= FirebaseAuth.getInstance();
 
         mAuthStateListner= new FirebaseAuth.AuthStateListener() {
 
@@ -77,8 +78,10 @@ public class LogInActivity extends AppCompatActivity {
                                Toast.makeText(LogInActivity.this, "Log In Error!", Toast.LENGTH_SHORT).show();
                            }
                            else{
+                               FirebaseUser user= mfirebaseAuth.getCurrentUser();
                                Intent intent= new Intent(LogInActivity.this,HomeActivity.class);
                                startActivity(intent);
+                               finish();
                            }
                         }
                     });

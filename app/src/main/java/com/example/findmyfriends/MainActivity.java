@@ -24,6 +24,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.*;
 
 public class MainActivity extends AppCompatActivity {
     EditText email, password;
@@ -73,7 +78,31 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this,"SignUp UnsuccessFul.Please Try Again",Toast.LENGTH_SHORT);
                             }
                             else{
+                                FirebaseUser user= mfirebaseAuth.getCurrentUser();
+                                //Get email and uid from auth;
+                                String email= user.getEmail();
+                                String uid= user.getUid();
+                                //When user is registered, store user info in firebase real-time database
+                                // using HashMap;
+                                HashMap<Object,String> hashMap= new HashMap<>();
+                                //put info in a hashmap;
+                                hashMap.put("email", email);
+                                hashMap.put("uid", uid);
+                                hashMap.put("name", "");
+                                hashMap.put("location", "");
+
+                                //database;
+                                FirebaseDatabase database= FirebaseDatabase.getInstance();
+                                //path to store user data;
+                                DatabaseReference reference= database.getReference("Users");
+                                //put data within hashmap in database;
+                                reference.child(uid).setValue(hashMap);
+
+
+
+
                                 startActivity(new Intent(MainActivity.this, HomeActivity.class));
+                                finish();
                             }
                         }
                     });
